@@ -34,7 +34,7 @@ public class MusicPlayerGUI extends JFrame {
         add(songImage);
 
         JLabel songTitle = new JLabel("Song Title");
-        songTitle.setBounds(0, 370, 400, 30); // pevná šířka okna
+        songTitle.setBounds(0, 370, 400, 30); 
         songTitle.setForeground(TEXT_COLOR);
         songTitle.setHorizontalAlignment(SwingConstants.CENTER);
         add(songTitle);
@@ -46,7 +46,7 @@ public class MusicPlayerGUI extends JFrame {
         add(songArtist);
 
         JSlider playbackSlider = new JSlider(JSlider.HORIZONTAL, 0, 100, 0);
-        playbackSlider.setBounds(50, 370, 300, 30); // x, y, šířka, výška
+        playbackSlider.setBounds(50, 370, 300, 30); 
         playbackSlider.setBackground(FRAME_COLOR);
         playbackSlider.setForeground(TEXT_COLOR);
         playbackSlider.setPaintTicks(true);
@@ -54,11 +54,12 @@ public class MusicPlayerGUI extends JFrame {
         playbackSlider.setMajorTickSpacing(10);
         add(playbackSlider);
 
-
+        addPlaybackBtns();
     }
 
     // Toolbar 
     private void addToolbar() {
+
         JToolBar toolBar = new JToolBar();
         toolBar.setBounds(0, 0, getWidth(), 20);
         toolBar.setFloatable(false);
@@ -87,6 +88,40 @@ public class MusicPlayerGUI extends JFrame {
 
         add(toolBar);
     }
+
+private void addPlaybackBtns() {
+    JPanel playbackBtns = new JPanel();
+    playbackBtns.setBounds(0, 435, getWidth() - 10, 80);
+    playbackBtns.setBackground(null);
+
+    // Předchozí tlačítko
+    JButton prevButton = new JButton(loadImage("src/assets/previous.png"));
+    prevButton.setBorderPainted(false);
+    prevButton.setBackground(null);
+    playbackBtns.add(prevButton);
+
+    // Play tlačítko
+    JButton playButton = new JButton(loadImage("src/assets/play.png"));
+    playButton.setBorderPainted(false);
+    playButton.setBackground(null);
+    playbackBtns.add(playButton);
+
+    // Pause tlačítko
+    JButton pauseButton = new JButton(loadImage("src/assets/pause.png"));
+    pauseButton.setBorderPainted(false);
+    pauseButton.setBackground(null);
+    playbackBtns.add(pauseButton);
+
+    // Next tlačítko 
+    JButton nextButton = new JButton(loadImage("src/assets/next.png"));
+    nextButton.setBorderPainted(false);
+    nextButton.setBackground(null);
+    playbackBtns.add(nextButton);
+
+    add(playbackBtns);
+}
+
+
 
     private ImageIcon loadImage(String imagePath) {
         try {
